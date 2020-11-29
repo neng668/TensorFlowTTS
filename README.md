@@ -186,7 +186,7 @@ To show the difference in accent properties between the General American English
 
 For New Zealand English -->
 
-![alt text](https://drive.google.com/file/d/1jIFWNm8j5T3kVU20beUhq_rt1PUCyno_/view?usp=sharing)
+![alt text](tensorflow_tts/vowel_plot_NZ_TF_TTS_centroids.png)
 
 For General American English -->
 
