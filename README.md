@@ -190,10 +190,10 @@ For New Zealand English -->
 
 For General American English -->
 
-![alt text](https://drive.google.com/file/d/1YR5W6qgMkVGIH0yfA-Mx18J_UBdwasWB/view?usp=sharing)
+![alt text](tensorflow_tts/vowel_plot_US_TF_TTS_centroids.png)
 
 For New Zealand Real Voice -->
 
-![alt text](https://drive.google.com/file/d/1kgOjH3GQvCDSZiML2DUJnToMrvRxURVl/view?usp=sharing)
+![alt text](tensorflow_tts/vowel_plot_NZ_RealVoice_centroids.png)
 
-As we can see from the vowel plots, the Tacotron-2 synthesized voice of New Zealand English is quite close to the vowel space plot of the New Zealand English real voice plot in terms of position of the vowels in the F1/F2 space and the plots are quite different for the General American English model vowel plot. This concludes that our training with the New Zealand Engish dataset changed the accent properties of the original American English model and got it close to the real New Zealand English voice according to the vowel plots.
+As we can see from the vowel plots, the Tacotron-2 synthesized voice of New Zealand English is quite close to the vowel space plot of the New Zealand English real voice plot in terms of position of the vowels in the F1/F2 space and the plots are quite different for the General American English model vowel plot. This concludes that our training with the New Zealand Engish dataset changed the accent properties of the original American English model and got it close to the real New Zealand English voice according to the vowel plots. The rest of the plot with all the points can be found in the following directory - tensorflow_tts/vowel_plots
