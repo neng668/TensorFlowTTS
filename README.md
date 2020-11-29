@@ -26,7 +26,7 @@ $ pip install TensorFlowTTS
 ### From source
 Examples are included in the repository but are not shipped with the framework. Therefore, to run the latest version of examples, you need to install the source below.
 ```bash
-$ git clone https://github.com/TensorSpeech/TensorFlowTTS.git
+$ git clone https://github.com/sabby993/TensorFlowTTS.git
 $ cd TensorFlowTTS
 $ pip install .
 ```
@@ -43,7 +43,7 @@ $ pip install --upgrade .
 
 
 # Audio Samples
-Here in an audio samples on valid set. [tacotron-2](https://drive.google.com/open?id=1kaPXRdLg9gZrll9KtvH3-feOBMM8sn3_), [fastspeech](https://drive.google.com/open?id=1f69ujszFeGnIy7PMwc8AkUckhIaT2OD0), [melgan](https://drive.google.com/open?id=1mBwGVchwtNkgFsURl7g4nMiqx4gquAC2), [melgan.stft](https://drive.google.com/open?id=1xUkDjbciupEkM3N4obiJAYySTo6J9z6b), [fastspeech2](https://drive.google.com/drive/u/1/folders/1NG7oOfNuXSh7WyAoM1hI8P5BxDALY_mU), [multiband_melgan](https://drive.google.com/drive/folders/1DCV3sa6VTyoJzZmKATYvYVDUAFXlQ_Zp)
+Here in an audio samples on valid set in New Zealand English. You can find the audio sample at the end of the colab notebook and also the text will be displayed above the allignemnt and spectrogram plots. [tacotron-2](https://colab.research.google.com/drive/1aWjxYkvh6W6W1hXXEKDPc9XjCJ262r6c?usp=sharing)
 
 # Tutorial End-to-End
 
@@ -151,25 +151,49 @@ After the above steps, a folder named ‘dump_ljspeech’ or 'dump_nz_cw' will b
 
 Now we can start the training process which will need the actual use of the GPU. We can start training by running the following code:
 ```
-	!CUDA_VISIBLE_DEVICES=0 python examples/tacotron2/train_tacotron2.py \
- 	 --train-dir ./dump_ljspeech/train/ \
-  	--dev-dir ./dump_ljspeech/valid/ \
-  	--outdir ./examples/tacotron2/exp/train.tacotron2.v1/ \
-  	--config ./examples/tacotron2/conf/tacotron2.v1.yaml \
-  	--use-norm 1 \
-  	--mixed_precision 0 \
-  	--pretrained ./examples/tacotron2/exp/train.tacotron2.v1/checkpoints/model-120000.h5
+!CUDA_VISIBLE_DEVICES=0 python examples/tacotron2/train_tacotron2.py \
+--train-dir ./dump_ljspeech/train/ \
+--dev-dir ./dump_ljspeech/valid/ \
+--outdir ./examples/tacotron2/exp/train.tacotron2.v1/ \
+--config ./examples/tacotron2/conf/tacotron2.v1.yaml \
+--use-norm 1 \
+--mixed_precision 0 \
+--pretrained ./examples/tacotron2/exp/train.tacotron2.v1/checkpoints/model-120000.h5
 ```
 The pretrained argument takes in the path of the pretrained model which is the base model on top of which the current dataset is fine-tuned upon.
 This code will run for quite some time and checkpoints will be saved every 2000 steps of training and a checkpoint file will be created inside the examples folder (examples/tacotron2/exp/train.tacotron2.v1/checkpoints/ckpt-2000).
 We can resume the training from the checkpoint by running the training command and adding the checkpoint directory after the --resume part, e.g
 ```
-	!CUDA_VISIBLE_DEVICES=0 python examples/tacotron2/train_tacotron2.py \
- 	 --train-dir ./dump_ljspeech/train/ \
-  	--dev-dir ./dump_ljspeech/valid/ \
-  	--outdir ./examples/tacotron2/exp/train.tacotron2.v1/ \
-  	--config ./examples/tacotron2/conf/tacotron2.v1.yaml \
-  	--use-norm 1 \
-  	--mixed_precision 0 \
-  	--resume ./examples/tacotron2/exp/train.tacotron2.v1/checkpoints/ckpt-2000
+!CUDA_VISIBLE_DEVICES=0 python examples/tacotron2/train_tacotron2.py \
+ --train-dir ./dump_ljspeech/train/ \
+--dev-dir ./dump_ljspeech/valid/ \
+--outdir ./examples/tacotron2/exp/train.tacotron2.v1/ \
+--config ./examples/tacotron2/conf/tacotron2.v1.yaml \
+--use-norm 1 \
+--mixed_precision 0 \
+--resume ./examples/tacotron2/exp/train.tacotron2.v1/checkpoints/ckpt-2000
 ```
+
+The colab notebook used for training nz_cw dataset on top of pretrained LJ Speech model can be found here [Training and Tensorboard Graphs](https://colab.research.google.com/drive/14K72jGtCnIkQHcI9nxF-QL4Oyr8qvAND?usp=sharing)
+
+## Inference
+
+The whole inference steps are there in the colab notebook here - [Inference](https://colab.research.google.com/drive/1aWjxYkvh6W6W1hXXEKDPc9XjCJ262r6c?usp=sharing)
+
+## Results
+
+To show the difference in accent properties between the General American English and New Zealand English, we employed RStudio to get vowel space plots of both the synthesized speech models speaking hVd words and the plots are below:
+
+For New Zealand English -->
+
+![alt text](https://drive.google.com/file/d/1jIFWNm8j5T3kVU20beUhq_rt1PUCyno_/view?usp=sharing)
+
+For General American English -->
+
+![alt text](https://drive.google.com/file/d/1YR5W6qgMkVGIH0yfA-Mx18J_UBdwasWB/view?usp=sharing)
+
+For New Zealand Real Voice -->
+
+![alt text](https://drive.google.com/file/d/1kgOjH3GQvCDSZiML2DUJnToMrvRxURVl/view?usp=sharing)
+
+As we can see from the vowel plots, the Tacotron-2 synthesized voice of New Zealand English is quite close to the vowel space plot of the real voice plot in terms of position of the vowels in the F1/F2 space and the plots are quite different for the General American English model vowel plot.
