@@ -174,6 +174,12 @@ We can resume the training from the checkpoint by running the training command a
 --resume ./examples/tacotron2/exp/train.tacotron2.v1/checkpoints/ckpt-2000
 ```
 
+Tensorboard graphs for LJ Speech trained model -->
+![alt text](tensorflow_tts/tensorboard_ljspeech.png)
+
+Tensorboard graphs for New Zealand English trained model fine tuned on the LJ Speech model -->
+![alt text](tensorflow_tts/tensorboard_cw_nz_20k_steps.PNG)
+
 The colab notebook used for training nz_cw dataset on top of pretrained LJ Speech model can be found here [Training and Tensorboard Graphs](https://colab.research.google.com/drive/14K72jGtCnIkQHcI9nxF-QL4Oyr8qvAND?usp=sharing)
 
 ## Inference
