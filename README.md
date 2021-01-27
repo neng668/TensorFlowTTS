@@ -12,11 +12,11 @@
 ## Requirements
 This repository is tested on Ubuntu 18.04 with:
 
-- Python 3.7+
+- Python 3.6.9+
 - Cuda 10.1
 - CuDNN 7.6.5
 - Tensorflow 2.2/2.3
-- [Tensorflow Addons](https://github.com/tensorflow/addons) >= 0.10.0
+- [Tensorflow Addons](https://github.com/tensorflow/addons) >= 0.10.0 (If necessary, use 0.10.0 with tensorflow-gpu==2.2)
 
 ## Installation
 ### With pip
