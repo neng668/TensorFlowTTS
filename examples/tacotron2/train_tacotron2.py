@@ -32,7 +32,7 @@ import yaml
 from tqdm import tqdm
 
 import tensorflow_tts
-from examples.tacotron2.tacotron_dataset import CharactorMelDataset
+from tacotron_dataset import CharactorMelDataset
 from tensorflow_tts.configs.tacotron2 import Tacotron2Config
 from tensorflow_tts.models import TFTacotron2
 from tensorflow_tts.optimizers import AdamWeightDecay, WarmUp
@@ -434,7 +434,7 @@ def main():
     with STRATEGY.scope():
         # define model.
         tacotron_config = Tacotron2Config(**config["tacotron2_params"])
-        tacotron2 = TFTacotron2(config=tacotron_config, training=True, name="tacotron2")
+        tacotron2 = TFTacotron2(config=tacotron_config,)
         tacotron2._build()
         tacotron2.summary()
 
